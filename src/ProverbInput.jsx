@@ -39,7 +39,8 @@ function ProverbInput({proverb, onProverbChange}) {
                         validChar={item}
                         key={index}
                         onChange={(value) => handleInputChange(index, value)}
-                        valid={valids[index]}/>
+                        valid={valids[index]}
+                        char={item}/>
                 }
             })}
         </div>

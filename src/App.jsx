@@ -4,7 +4,7 @@ import LetterInfo from './LetterInfo';
 import ProverbInput from './ProverbInput';
 
 function App() {
-  const [proverb, setProverb] = useState("SZÍNHÁZ AZ EGÉSZ VILÁG")
+  const [proverb, setProverb] = useState("SZÍNHÁZ, AZ EGÉSZ VILÁG?")
   const [proverbRemaining, setProverbRemaining] = useState(proverb)
 
   const handleProverbChange = (updatedProverb) => {
