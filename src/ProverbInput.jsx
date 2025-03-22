@@ -41,6 +41,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
   return (
     <>
     <p>{JSON.stringify(valids)}</p>
+    <p>{JSON.stringify(inputs)}</p>
         <div className='d-flex'>
         {proverb.split('').map((item, index) => {
             if (item === ' ') {
