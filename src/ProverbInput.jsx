@@ -55,6 +55,9 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
             case "Backspace":
               focusPreviousInput(id);
               break;
+            case "Enter":
+              validateInput();
+              break;
             default:
               return;
           }
@@ -65,7 +68,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         return () => {
           document.removeEventListener("keydown", handleKeyDown);
         };
-      }, [valids]);
+      }, [valids, proverb, inputs]);
       
 
     const validateInput = () => {
@@ -84,6 +87,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         setValids(updatedValids)
         onProverbChange(updatedProverb);
         checkWin(updatedValids)
+        focusNextInput(0);
     }
 
     const checkWin = (updatedValids) => {
