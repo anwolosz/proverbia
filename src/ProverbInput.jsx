@@ -6,22 +6,30 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     const [inputs, setInputs] = useState(proverb.split("").map(() => ""));
     const [valids, setValids] = useState(proverb.split("").map((char) => !validLetters.includes(char) ? true : false ));
 
-    const handleInputChange = (index, value, id) => {
+    const handleInputChange = (index, value) => {
         const updatedInputs = [...inputs];
         updatedInputs[index] = value.toUpperCase();
         setInputs(updatedInputs);
-        focusNextInput(id)
-        console.log(id)
-        console.log(inputs)
-        console.log(index, value, id)
+        focusNextInput(index)
     };
 
-    const focusNextInput = (id) => {
-        focusInput(id+1)
+    const focusNextInput = (index) => { 
+        let nextId = index + 1
+        console.log(inputs[nextId])
+        while (valids[nextId]){
+            nextId++
+        }
+        focusInput(nextId)
     }
 
-    const focusPreviousInput = (id) => {
-        focusInput(id-1)
+    const focusPreviousInput = (index) => {
+        let nextId = index - 1
+        console.log(inputs[nextId])
+        while (valids[nextId]){
+            nextId--
+        }
+        focusInput(nextId)
+
     }
 
     const focusInput = (id) => {
@@ -57,10 +65,11 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         return () => {
           document.removeEventListener("keydown", handleKeyDown);
         };
-      }, []);
+      }, [valids]);
       
 
     const validateInput = () => {
+        console.log("VALIDATE")
         const updatedValids = [...valids];
         let updatedProverb = "";
         for (let i = 0; i<proverb.length; i++)
@@ -84,8 +93,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         }
     }
 
-
-    let idCounter = 0;
   return (
     <>
     <p>{JSON.stringify(valids)}</p>
@@ -97,10 +104,10 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
                 } else {
                     return (
                         <CharInput
-                            id={validLetters.includes(item) ? idCounter++ : null}
+                            id={index}
                             validChar={item}
                             key={index}
-                            onChange={(value, id) => handleInputChange(index, value, id)}
+                            onChange={(value, id) => handleInputChange(index, value)}
                             valid={valids[index]}
                             char={item}
                         />

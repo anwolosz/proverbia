@@ -15,7 +15,7 @@ function CharInput({char, onChange, valid, id}) {
             const inputSymbol = e.key.toUpperCase()
             if (validLetters.includes(inputSymbol)) { // Only allow printable characters
                 setInputValue(inputSymbol);
-                onChange(inputSymbol, id);
+                onChange(inputSymbol);
             }
             e.preventDefault(); // Prevent default input behavior
         }}
