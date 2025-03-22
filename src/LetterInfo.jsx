@@ -1,8 +1,8 @@
 import React from 'react';
+import { validLetters } from './utils/characters';
 
 function LetterInfo({proverb}) {
     const countLetters = (proverb) => {
-        const validLetters = "AÁBCDEÉFGHIÍJKLMNOÓÖŐPQRSTUÚÜŰVWXYZ"
         const letterCount = []
     
         const lowerCaseString = proverb;

@@ -1,10 +1,8 @@
 import {React, useState} from 'react';
+import { specialCharacters } from './utils/characters';
 
 function CharInput({char, onChange, valid}) {
     const [inputValue, setInputValue] = useState("");
-
-    const specialCharacters = ",?"
-
 
   return (
         <input

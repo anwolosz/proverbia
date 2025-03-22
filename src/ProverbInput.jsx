@@ -1,9 +1,10 @@
 import {React, useState} from 'react';
 import CharInput from './CharInput';
+import { validLetters } from './utils/characters';
 
-function ProverbInput({proverb, onProverbChange}) {
+function ProverbInput({proverb, onProverbChange, onWin}) {
     const [inputs, setInputs] = useState(proverb.split("").map(() => ""));
-    const [valids, setValids] = useState(proverb.split("").map(() => false));
+    const [valids, setValids] = useState(proverb.split("").map((char) => !validLetters.includes(char) ? true : false ));
 
     const handleInputChange = (index, value) => {
         const updatedInputs = [...inputs];
@@ -26,10 +27,20 @@ function ProverbInput({proverb, onProverbChange}) {
         }
         setValids(updatedValids)
         onProverbChange(updatedProverb);
+        checkWin(updatedValids)
     }
+
+    const checkWin = (updatedValids) => {
+        if (!updatedValids.includes(false))
+        {
+            onWin()
+        }
+    }
+
 
   return (
     <>
+    <p>{JSON.stringify(valids)}</p>
         <div className='d-flex'>
         {proverb.split('').map((item, index) => {
             if (item === ' ') {
