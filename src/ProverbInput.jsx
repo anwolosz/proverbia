@@ -15,7 +15,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
 
     const focusNextInput = (index) => { 
         let nextId = index + 1
-        console.log(inputs[nextId])
         while (valids[nextId]){
             nextId++
         }
@@ -23,10 +22,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     }
 
     const focusPreviousInput = (index) => {
-        console.log("focusPreviousInput1", index)
-        console.log("focusPreviousInput2", valids[index])
-        console.log("focusPreviousInput3", valids.slice(0, index))
-        console.log("focusPreviousInput4", valids.slice(0, index).every(val => val === true))
 
         if (valids[index] === false && valids.slice(0, index).every(val => val === true))
         {
@@ -34,7 +29,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
             return
         }
         let nextId = index - 1
-        console.log(inputs[nextId])
         while (valids[nextId]){
             nextId--
         }
@@ -54,7 +48,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     useEffect(() => {
         const handleKeyDown = (event) => {
           const id = parseInt(document.activeElement.id);
-        //   proverbRemaining(proverb)
+          proverbRemaining(proverb)
       
           switch (event.key) {
             case "ArrowRight":
@@ -63,9 +57,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
               break;
             case "ArrowLeft":
             case "Backspace":
-                console.log("BACKSPACE1")
                 focusPreviousInput(id);
-                console.log("BACKSPACE2")
               break;
             case "Enter":
               validateInput();
@@ -97,7 +89,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
             }
         }
         proverbRemaining(proverb)
-        console.log(updatedProverb)
         setValids(updatedValids)
         checkWin(updatedValids)
         focusNextInput(-1);
@@ -111,7 +102,6 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
                 updatedProverb = updatedProverb.replace(inputs[i], ''); // Removes only the first occurrence
             }
         }
-            console.log("HELLO", updatedProverb)
         onProverbChange(updatedProverb);
     }
 
