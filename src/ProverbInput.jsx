@@ -99,8 +99,8 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
 
   return (
     <>
-    <p>{JSON.stringify(valids)}</p>
-    <p>{JSON.stringify(inputs)}</p>
+    {/* <p>{JSON.stringify(valids)}</p>
+    <p>{JSON.stringify(inputs)}</p> */}
         <div className='d-flex'>
         {proverb.split('').map((item, index) => {
             if (item === ' ') {
@@ -119,7 +119,9 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
                 }
             })}
         </div>
-        <button className='btn btn-primary' onClick={validateInput} >Check!</button>
+        <div className="d-flex justify-content-center">
+            <button className='btn btn-primary m-3' onClick={validateInput} >Check!</button>
+        </div>
     </>
   );
 }

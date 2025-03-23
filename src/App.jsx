@@ -18,11 +18,18 @@ function App() {
 
   return (
     <>
-    <p>{proverbRemaining}</p>
+    <h1 className='text-center display-3 p-5'>Proverbia</h1>
+    {/* <p>{proverbRemaining}</p> */}
       <div className='container'>
         <ProverbInput proverb={proverb} onProverbChange={handleProverbChange} onWin={handleWin}/>
         <LetterInfo proverb={proverbRemaining}/>
-        <p>Helo {JSON.stringify(isWin)} {isWin ? "WIN": "NOWIN"}</p>
+        {
+          isWin ? 
+          <div class="alert alert-success" role="alert">
+            Gratulálunk! Tippek száma:
+          </div>
+          : ""
+        }
       </div>
     </>
   )

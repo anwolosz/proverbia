@@ -28,27 +28,24 @@ function LetterInfo({proverb}) {
         return letterCount;
     };
   return (
-    <div>
-      <h1>LetterComponent</h1>
-        <div className="row g-1">
-            {countLetters(proverb).map((letterObj, index) => {
-                const key = Object.keys(letterObj)[0];
-                return (
-                    <div className='col-lg-1 col-md-4 col-sm-12' key={index}>
-                        <div className='card'>
-                            <div className='row g-0'>
-                                <div className='col-6 bg-light rounded-start text-center d-flex align-items-center justify-content-center'>
-                                    {key}
-                                </div>
-                                <div className='col-6 card-body d-flex text-center align-items-center justify-content-center'>
-                                    {letterObj[key]}
-                                </div>
+    <div className="row g-1">
+        {countLetters(proverb).map((letterObj, index) => {
+            const key = Object.keys(letterObj)[0];
+            return (
+                <div className='col-lg-1 col-md-4 col-sm-12' key={index}>
+                    <div className='card'>
+                        <div className='row g-0'>
+                            <div className='col-6 bg-light rounded-start text-center d-flex align-items-center justify-content-center'>
+                                {key}
+                            </div>
+                            <div className='col-6 card-body d-flex text-center align-items-center justify-content-center'>
+                                {letterObj[key]}
                             </div>
                         </div>
                     </div>
-                );
-            })}
-        </div>
+                </div>
+            );
+        })}
     </div>
   );
 }

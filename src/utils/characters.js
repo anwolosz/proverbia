@@ -1,2 +1,2 @@
 export const validLetters = "AÁBCDEÉFGHIÍJKLMNOÓÖŐPQRSTUÚÜŰVWXYZ"
-export const specialCharacters = ",?"
+export const specialCharacters = ",?!."

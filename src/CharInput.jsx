@@ -8,8 +8,7 @@ function CharInput({char, onChange, valid, id}) {
         <input
         maxLength={1}
         className={`form-control text-center fw-bold
-            ${specialCharacters.includes(char) ? "bg-secondary-subtle": ""}
-            ${valid ? "bg-success": ""}`}
+            ${specialCharacters.includes(char) || valid ? "bg-success-subtle": ""}`}
         style={{width: "50px"}}
         onKeyDown={(e) => {
             const inputSymbol = e.key.toUpperCase()
