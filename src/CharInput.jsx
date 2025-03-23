@@ -11,6 +11,13 @@ function CharInput({char, onChange, valid, id}) {
             ${specialCharacters.includes(char) || valid ? "bg-success-subtle": ""}`}
         style={{width: "50px"}}
         onKeyDown={(e) => {
+            if (e.key=== "Backspace")
+            {
+                console.log("ABCDE")
+                setInputValue("");
+                onChange("");
+                return
+            }
             const inputSymbol = e.key.toUpperCase()
             if (validLetters.includes(inputSymbol)) { // Only allow printable characters
                 setInputValue(inputSymbol);

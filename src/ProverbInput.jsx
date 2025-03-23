@@ -3,7 +3,7 @@ import CharInput from './CharInput';
 import { validLetters } from './utils/characters';
 
 function ProverbInput({proverb, onProverbChange, onWin}) {
-    const [inputs, setInputs] = useState(proverb.split("").map(() => ""));
+    const [inputs, setInputs] = useState(proverb.split("").map((char) => !validLetters.includes(char) ? char : "" ));
     const [valids, setValids] = useState(proverb.split("").map((char) => !validLetters.includes(char) ? true : false ));
 
     const handleInputChange = (index, value) => {
@@ -99,8 +99,8 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
 
   return (
     <>
-    {/* <p>{JSON.stringify(valids)}</p>
-    <p>{JSON.stringify(inputs)}</p> */}
+    <p>{JSON.stringify(valids)}</p>
+    <p>{JSON.stringify(inputs)}</p>
         <div>
             <div className="row d-flex justify-content-center">
         {proverb.split('').map((item, index) => {
