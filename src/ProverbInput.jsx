@@ -23,13 +23,22 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     }
 
     const focusPreviousInput = (index) => {
+        console.log("focusPreviousInput1", index)
+        console.log("focusPreviousInput2", valids[index])
+        console.log("focusPreviousInput3", valids.slice(0, index))
+        console.log("focusPreviousInput4", valids.slice(0, index).every(val => val === true))
+
+        if (valids[index] === false && valids.slice(0, index).every(val => val === true))
+        {
+            focusInput(index)
+            return
+        }
         let nextId = index - 1
         console.log(inputs[nextId])
         while (valids[nextId]){
             nextId--
         }
         focusInput(nextId)
-
     }
 
     const focusInput = (id) => {
@@ -45,6 +54,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     useEffect(() => {
         const handleKeyDown = (event) => {
           const id = parseInt(document.activeElement.id);
+        //   proverbRemaining(proverb)
       
           switch (event.key) {
             case "ArrowRight":
@@ -53,7 +63,9 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
               break;
             case "ArrowLeft":
             case "Backspace":
-              focusPreviousInput(id);
+                console.log("BACKSPACE1")
+                focusPreviousInput(id);
+                console.log("BACKSPACE2")
               break;
             case "Enter":
               validateInput();
@@ -78,19 +90,29 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         }
         const updatedValids = [...valids];
         let updatedProverb = "";
-        for (let i = 0; i<proverb.length; i++)
+        for (let i = 0; i<inputs.length; i++)
         {
             if (proverb[i] === inputs[i]) {
                 updatedValids[i] = true
             }
-            else {
-                updatedProverb += proverb[i]
-            }
         }
+        proverbRemaining(proverb)
+        console.log(updatedProverb)
         setValids(updatedValids)
-        onProverbChange(updatedProverb);
         checkWin(updatedValids)
         focusNextInput(-1);
+    }
+
+    const proverbRemaining = (proverb) => {
+        let updatedProverb = proverb;
+
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].length > 0 && validLetters.includes(inputs[i])) {
+                updatedProverb = updatedProverb.replace(inputs[i], ''); // Removes only the first occurrence
+            }
+        }
+            console.log("HELLO", updatedProverb)
+        onProverbChange(updatedProverb);
     }
 
     const checkWin = (updatedValids) => {
@@ -102,8 +124,8 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
 
   return (
     <>
-    <p>{JSON.stringify(valids)}</p>
-    <p>{JSON.stringify(inputs)}</p>
+    {/* <p>{JSON.stringify(valids)}</p>
+    <p>{JSON.stringify(inputs)}</p> */}
         <div>
             <div className="row d-flex justify-content-center">
         {proverb.split('').map((item, index) => {
