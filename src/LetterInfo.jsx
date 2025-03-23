@@ -28,20 +28,18 @@ function LetterInfo({proverb}) {
         return letterCount;
     };
   return (
-    <div className="row g-1">
+    <div className="row g-4">
         {countLetters(proverb).map((letterObj, index) => {
             const key = Object.keys(letterObj)[0];
             return (
                 <div className='col-lg-1 col-md-4 col-sm-12' key={index}>
                     <div className='card'>
-                        <div className='row g-0'>
-                            <div className='fw-bold col-6 p-1 bg-light rounded-start text-center d-flex align-items-center justify-content-center'>
+                            <div className='fw-bold p-0 bg-light text-center card-header'>
                                 {key}
                             </div>
-                            <div className='col-6 p-1 card-body d-flex text-center align-items-center justify-content-center'>
+                            <div className='p-1 text-center '>
                                 {letterObj[key]}
                             </div>
-                        </div>
                     </div>
                 </div>
             );
