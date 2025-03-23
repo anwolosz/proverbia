@@ -72,7 +72,10 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
       
 
     const validateInput = () => {
-        console.log("VALIDATE")
+        if (inputs.includes(""))
+        {
+            return
+        }
         const updatedValids = [...valids];
         let updatedProverb = "";
         for (let i = 0; i<proverb.length; i++)
@@ -123,7 +126,10 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
                 </div>
         </div>
         <div className="d-flex justify-content-center">
-            <button className='btn btn-primary m-3' onClick={validateInput} >Check!</button>
+            <button
+            className='btn btn-primary m-3'
+            onClick={validateInput}
+            disabled={inputs.includes("")}>Check!</button>
         </div>
     </>
   );
