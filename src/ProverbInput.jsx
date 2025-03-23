@@ -87,7 +87,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         setValids(updatedValids)
         onProverbChange(updatedProverb);
         checkWin(updatedValids)
-        focusNextInput(0);
+        focusNextInput(-1);
     }
 
     const checkWin = (updatedValids) => {
@@ -104,7 +104,7 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
         <div className='d-flex'>
         {proverb.split('').map((item, index) => {
             if (item === ' ') {
-                return <div key={index} style={{ width: '30px' }} />;
+                return <p key={index} style={{ width: '30px' }} >{item}</p>;
                 } else {
                     return (
                         <CharInput
