@@ -101,12 +101,14 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
     <>
     {/* <p>{JSON.stringify(valids)}</p>
     <p>{JSON.stringify(inputs)}</p> */}
-        <div className='d-flex'>
+        <div>
+            <div className="row d-flex justify-content-center">
         {proverb.split('').map((item, index) => {
             if (item === ' ') {
-                return <p key={index} style={{ width: '30px' }} >{item}</p>;
+                return <hr className="opacity-0 m-1"></hr>;
                 } else {
                     return (
+
                         <CharInput
                             id={index}
                             validChar={item}
@@ -114,10 +116,11 @@ function ProverbInput({proverb, onProverbChange, onWin}) {
                             onChange={(value, id) => handleInputChange(index, value)}
                             valid={valids[index]}
                             char={item}
-                        />
-                    );
-                }
-            })}
+                            />
+                        );
+                    }
+                })}
+                </div>
         </div>
         <div className="d-flex justify-content-center">
             <button className='btn btn-primary m-3' onClick={validateInput} >Check!</button>

@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-    <h1 className='text-center display-3 p-5'>Proverbia</h1>
+    <h1 className='text-center p-3'>Proverbia</h1>
     {/* <p>{proverbRemaining}</p> */}
       <div className='container'>
         <ProverbInput proverb={proverb} onProverbChange={handleProverbChange} onWin={handleWin}/>
