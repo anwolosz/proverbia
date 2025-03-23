@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import LetterInfo from './LetterInfo';
 import ProverbInput from './ProverbInput';
+import proverbs from './assets/proverbs.json';
 
 function App() {
-  const [proverb, setProverb] = useState("SZÍNHÁZ, AZ EGÉSZ VILÁG")
+  const [proverb, setProverb] = useState(proverbs[Math.floor(Math.random() * proverbs.length)])
   const [proverbRemaining, setProverbRemaining] = useState(proverb)
   const [isWin, setIsWin] = useState(false)
 
